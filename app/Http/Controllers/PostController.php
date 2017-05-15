@@ -40,7 +40,7 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //validate the data
+        //validate the data on server
         $this->validate($request,[
             
             'title' => 'required|max:255',
@@ -55,6 +55,7 @@ class PostController extends Controller
         
         $post->save();
         
+        //add flash success session
         Session::flash('success','This blog post was successfully saved');
         //redirect to another page
         return redirect()->route('posts.show',$post->id);

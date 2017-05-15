@@ -1,7 +1,9 @@
+<!--main html every page uses  -->
 <!DOCTYPE html>
 <html lang="en">
     
   <head>
+    <!--title of each page -->
     @include('partials/title')
     @include('partials/styles')
   </head>
