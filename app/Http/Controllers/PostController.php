@@ -48,11 +48,11 @@ class PostController extends Controller
             'body' => 'required'
             
             ]);
+            
         //store in database
         $post = new Post;
         $post->title = $request->title;
         $post->body = $request->body;
-        
         $post->save();
         
         //add flash success session
