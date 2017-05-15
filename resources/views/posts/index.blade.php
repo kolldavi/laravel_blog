@@ -14,7 +14,7 @@
         </div>
         <div row>
             <div class="col-md-12">
-                <table class="table">
+                <table class="table table-striped table-responsive">
                     <thead>
                         <th>ID</th>
                         <th>Title</th>
@@ -40,6 +40,9 @@
                         @endforeach
                     </tbody>
                 </table>
+                <div class="text-center">
+                    {!! $posts->links() !!}
+                </div>
             </div>
         </div>
     </div>
