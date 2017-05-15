@@ -8,11 +8,11 @@
     @include('partials/styles')
   </head>
     <body>
-        @include('partials/navbar')
-        <div class="container">
-          @include('partials.messages')
-          @yield('content')
-        </div>
+      @include('partials/navbar')
+      <div class="container">
+        @include('partials.messages')
+        @yield('content')
+      </div>
     @include('partials/footer')
     @include('partials/scripts')
     </body>

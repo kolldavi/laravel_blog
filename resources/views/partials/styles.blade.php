@@ -13,4 +13,4 @@
 
 <!--add custom stylesheet -->
   {!!Html::style('css/style.css') !!}
-    @yield('stylesheets')
+  @yield('stylesheets')

@@ -6,7 +6,7 @@
     </div>
 @endif
 
-<!--check if validate the data failed in PostController -->
+<!--check if validate the data failed in PostControlle -->
 @if (count($errors) > 0)
     <div class="alert alert-danger" role="alert">
         <strong>Error:</strong> 
