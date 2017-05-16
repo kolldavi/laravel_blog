@@ -2,9 +2,7 @@
 @section('title')
 | Create View Post
 @endsection
-@section('stylesheets')
-  {!!Html::style('css/style.css') !!}
-@endsection
+
 
 @section('content')
 
@@ -19,7 +17,8 @@
 			<div class="well">
 				<dl class="dl-horizontal">
 					<dt>URL Slug:</dt>
-					<dd><a href="{{ url($post->slug) }}">{{$post->slug}}</a></dd>
+					<!--<dd><a href="{{ url($post->slug) }}">{{$post->slug}}</a></dd>-->
+					<dd><a href="{{ route('blog.single',$post->slug) }}">{{$post->slug}}</a></dd>	
 				</dl>
 				<dl class="dl-horizontal">
 					<dt>Create At:</dt>

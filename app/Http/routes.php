@@ -12,10 +12,24 @@
 */
 
  Route::group(['middelware'=>['web']],function(){
+  
+
    Route::get('about', 'PagesController@getAbout');
    Route::get('contact', 'PagesController@getContact');
    Route::get('/','PagesController@getIndex' );
    Route::resource('posts','PostController');
+   Route::get('blog/{slug}',['as'=>'blog.single','uses'=>'BlogController@getSingle'])->where('slug','[\w\d\-\_]+');
+   Route::get('blog',['uses'=>'BlogController@getIndex','as'=>'blog.index']);
+   
+     //Authentication routes
+   Route::get('auth/login',['as'=>'login','uses'=>'Auth\AuthController@getLogin']);
+   Route::post('auth/login','Auth\AuthController@postLogin');
+   Route::get('auth/logout',['as' => 'logout','uses' => 'Auth\AuthController@getLogout']);
+   
+   //registration routes
+   Route::get('auth/register',['as'=>'register', 'uses'=>'Auth\AuthController@getRegister']);
+   Route::post('auth/register','Auth\AuthController@postRegister');
+      
  });
 
  

@@ -11,6 +11,9 @@ use Session;
 
 class PostController extends Controller
 {
+    public function __construct(){
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -103,13 +106,23 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
+        //check if slug changed
+        $post = Post::find($id);
+        
+        if($request->input('slug') == $post->slug){
+    //validate data
+        $this->validate($request,[
+            'title' => 'required|max:255',
+            'body' => 'required'
+            ]);
+        }else{
         //validate data
         $this->validate($request,[
             'title' => 'required|max:255',
             'slug' => 'required|alpha_dash|max:255|min:5|unique:posts,slug',
             'body' => 'required'
             ]);
-            
+        }
             
         //save data 
         $post = Post::find($id);
