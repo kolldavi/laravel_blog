@@ -14,6 +14,9 @@
         {{ Form::label('title','Title:')}}
         {{ Form::text('title',null,array('class'=>'form-control','required'=>'','data-parsley-maxlength'=>'255','maxlength'=>"255"))}}
         
+        {{ Form::label('slug','Slug:')}}
+        {{ Form::text('slug',null,array('class'=>'form-control','required'=>'','data-parsley-maxlength'=>'255','maxlength'=>"255",'minlength'=>"5"))}}
+        
         {{ Form::label('body','Body:')}}
         {{ Form::textarea('body',null,array('class'=>'form-control', 'placeholder'=>'enter Text','data-parsley-required'=>"true",'required'=>''))}}
         
