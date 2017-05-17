@@ -23,6 +23,7 @@
             {!! Form::close() !!}
             
              <a href="{{route('register')}}" class="btn btn-default btn-block btnOffset">Register</a>
+             <p class="btnOffset"><a href="{{url('password/reset')}}">Forgot Password</a></p>
         </div>
     </div>
 @endsection

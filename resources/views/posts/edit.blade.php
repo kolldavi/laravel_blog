@@ -37,19 +37,26 @@
 				<hr>
 				<div class="row">
 				    <div class="col-sm-6">
-				    	{{ Form::submit('Save Changes', ['class' => 'btn btn-success btn-block']) }}
+				    	{{ Form::submit('Save Changes', ['class' => 'btn btn-primary btn-block']) }}
 					</div>
 					
 					<div class="col-sm-6">
 					<!-- {!! Html::linkRoute('posts.edit', 'Edit', array($post->id), array('class' => 'btn btn-primary btn-block')) !!} -->
-						  <a href="{{ route('posts.edit', $post->id) }}" class="btn btn-danger btn-block">Cancel</a>
+						  <a href="{{ route('posts.index') }}" class="btn btn-primary btn-block">Cancel</a>
 					</div>
-
+				{!! Form::close() !!}
+				</div>
+				<div class="row">
+					<div class="col-sm-12">
+						 {{Form::open(['route'=>['posts.destroy',$post->id],'method'=>'DELETE'])}}
+						{{Form::submit('Delete',['class' => 'btn btn-danger btn-block btnOffset'])}}
+						{{Form::close()}}
+					</div>
 				</div>
 
 			</div>
 		</div>
-		      {!! Form::close() !!}
+
   </div>
 @endsection
 
