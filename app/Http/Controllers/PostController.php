@@ -149,8 +149,8 @@ class PostController extends Controller
         //delete post from database
         $post = Post::find($id);
         $post->delete();
-        
-        Session::flash('success','The post was deleted');
+
+        Session::flash('success',"The post ". $post->{'slug'} ." was deleted");
         return redirect()->route('posts.index');
     }
 }
