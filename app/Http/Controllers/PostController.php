@@ -5,10 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
-
+use App\Tag;
 use App\Post;
 use Session;
-
+use App\Category;
 class PostController extends Controller
 {
     public function __construct(){
@@ -35,8 +35,12 @@ class PostController extends Controller
      */
     public function create()
     {
+        //get all categories
+        
+        $categories = Category::all();
+        $tags = Tag::all();
         //create form view
-        return view('posts/create');
+        return view('posts/create')->withCategories($categories)->withTags($tags);
     }
 
     /**
@@ -52,7 +56,8 @@ class PostController extends Controller
             
             'title' => 'required|max:255',
             'slug' => 'required|alpha_dash|max:255|min:5',
-            'body' => 'required'
+            'body' => 'required',
+            'category_id'=>'required|integer'
             
             ]);
             
@@ -61,6 +66,7 @@ class PostController extends Controller
         $post->title = $request->title;
         $post->slug = $request->slug;
         $post->body = $request->body;
+        $post->category_id = $request->category_id;
         $post->save();
         
         //add flash success session
@@ -93,8 +99,22 @@ class PostController extends Controller
         //find post in db
         $post = Post::find($id);
         
+        
+        //display view of all categories
+        $categories = Category::all();
+        $categoriesMap = [];
+        foreach($categories as $category){
+            $categoriesMap[$category->id] = $category->name;
+        }
+        
+        $tags = Tag::all();
+        $tags2 = array();
+        foreach ($tags as $tag) {
+            $tags2[$tag->id] = $tag->name;
+        }
+        
         //return view
-        return view('posts.edit')->withPost($post);
+        return view('posts.edit')->withPost($post)->withCategories($categoriesMap)->withTags($tags2);
     }
 
     /**
@@ -113,14 +133,17 @@ class PostController extends Controller
     //validate data
         $this->validate($request,[
             'title' => 'required|max:255',
-            'body' => 'required'
+            'body' => 'required',
+            'category_id'=>'required|integer'
             ]);
         }else{
         //validate data
         $this->validate($request,[
             'title' => 'required|max:255',
             'slug' => 'required|alpha_dash|max:255|min:5|unique:posts,slug',
-            'body' => 'required'
+            'body' => 'required',
+            'category_id'=>'required|integer'
+            
             ]);
         }
             
@@ -130,8 +153,15 @@ class PostController extends Controller
         $post->title = $request->input('title');
         $post->slug = $request->input('slug');
         $post->body = $request->input('body');
+        $post->category_id = $request->category_id;
         $post->save();
         
+        //set tags in db
+         if (isset($request->tags)) {
+            $post->tags()->sync($request->tags);
+        } else {
+            $post->tags()->sync(array());
+        }
         //flash data with success msg
          Session::flash('success','This blog post was successfully updated');
         // return view

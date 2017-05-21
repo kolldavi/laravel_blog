@@ -11,6 +11,7 @@
         </div>
         <div col-md-2>
             <a href="{{route('posts.create')}}" class="btn btn-primary btnOffset">Create New Post</a>
+            
         </div>
         <div row>
             <div class="col-md-12">
@@ -20,7 +21,7 @@
                         <th>Title</th>
                         <th>Body</th>
                         <th>Create At</th>
-                        <th>blank</th>
+                        <th></th>
                     </thead>
                     <tbody>
                         @foreach($posts as $post)

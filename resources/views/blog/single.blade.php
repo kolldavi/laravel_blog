@@ -13,6 +13,12 @@
             <p>{{ $post->body }}</p>
             <hr>
             <p>The Category is: {{$post->category->name}}</p>
+            <hr>
+            <div class="tags">
+				@foreach ($post->tags as $tag)
+					<span class="label label-default">{{ $tag->name }}</span>
+				@endforeach
+			</div>
         </div>
     </div>
 

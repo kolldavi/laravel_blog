@@ -4,6 +4,7 @@
 @endsection
 @section('stylesheets')
   {!!Html::style('css/parsley.css') !!}
+    {!!Html::style('css/select2.min.css') !!}
 @endsection
 @section('content')
   <div class="row">
@@ -18,9 +19,16 @@
         {{ Form::label('slug','Slug:',['class'=>'btnOffset'])}}
         {{ Form::text('slug',null,array('class'=>'form-control ','required'=>'','data-parsley-maxlength'=>'255','maxlength'=>"255",'minlength'=>"5"))}}
         
+        {{Form::label('category_id','Category',['class'=>'btnOffset'])}}
+        {{Form::select('category_id',$categories,$post->category_id,['class'=>'form-control'])}}
+        
+				{{ Form::label('tags', 'Tags:', ['class' => 'form-spacing-top']) }}
+				{{ Form::select('tags[]', $tags, null, ['class' => 'form-control select2-multi', 'multiple' => 'multiple']) }}
+						
         {{ Form::label('body','Body:',['class'=>'btnOffset'])}}
         {{ Form::textarea('body',null,array('class'=>'form-control', 'placeholder'=>'enter Text','data-parsley-required'=>"true",'required'=>''))}}
         
+      
     </div>
     	<!-- right edit box -->
     	<div class="col-md-4">
@@ -62,4 +70,9 @@
 
 @section('scripts')
   {!!Html::script('js/parsley.min.js') !!}
+   {!!Html::script('js/select2.min.js') !!}
+	<script type="text/javascript">
+
+		$('.select2-multi').select2().val({!! json_encode($post->tags()->getRelatedIds()) !!}).trigger('change');
+	</script>
 @endsection

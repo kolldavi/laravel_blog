@@ -1,9 +1,6 @@
 @extends('main')
 @section('title')
-| blog}
-@endsection
-@section('stylesheets')
-  {!!Html::style('css/style.css') !!}
+| blog
 @endsection
 
 @section('content')
