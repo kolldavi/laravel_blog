@@ -56,7 +56,7 @@
 				</div>
 				<div class="row">
 					<div class="col-sm-12">
-						 {{Form::open(['route'=>['posts.destroy',$post->id],'method'=>'DELETE'])}}
+						{{Form::open(['route'=>['posts.destroy',$post->id],'method'=>'DELETE'])}}
 						{{Form::submit('Delete',['class' => 'btn btn-danger btn-block btnOffset'])}}
 						{{Form::close()}}
 					</div>

@@ -10,7 +10,8 @@
         <div class="col-md-8 col-md-offset-2">
           <h1>Contact Me</h1>
           <hr>
-          <form data-parsley-validate>
+          <form action="{{url('contact')}}" method="POST" data-parsley-validate>
+            {{csrf_field()}}
             <div class="form-group",>
               <label name="email">Email:</label>
               <input id="email" name="email" type="email" class="form-control" data-parsley-required ="true" required>

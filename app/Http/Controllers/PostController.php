@@ -9,6 +9,7 @@ use App\Tag;
 use App\Post;
 use Session;
 use App\Category;
+
 class PostController extends Controller
 {
     public function __construct(){
@@ -69,6 +70,7 @@ class PostController extends Controller
         $post->category_id = $request->category_id;
         $post->save();
         
+        $post->tags()->sync($request->tags, false);
         //add flash success session
         Session::flash('success','This blog post was successfully saved');
         //redirect to another page
@@ -178,6 +180,7 @@ class PostController extends Controller
     {
         //delete post from database
         $post = Post::find($id);
+        $post->tags()->detach();
         $post->delete();
 
         Session::flash('success',"The post ". $post->{'slug'} ." was deleted");
