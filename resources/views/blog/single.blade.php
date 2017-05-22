@@ -55,9 +55,9 @@
                             {{Form::text('email',null,['class'=>'form-control'])}}
                         </div>
                         <div class="col-md-12">
-                            {{Form::label('comment','Comment:')}}
+                            {{Form::label('comment','Comment:',['class'=>'btnOffset'])}}
                             {{Form::textarea('comment',null,['class'=>'form-control', 'rows'=>'5'])}}
-                            {{Form::submit('Add Comment',['class'=>'btn btn-success btnOffset'])}}
+                            {{Form::submit('Add Comment',['class'=>'btn btn-success offset20'])}}
                         </div>
                         
                     </div>

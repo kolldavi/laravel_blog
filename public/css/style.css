@@ -36,7 +36,10 @@ body {
   margin-top: 20px;
 
 }
-
+.offset20{
+    margin-top: 20px;
+margin-bottom: 20px;
+}
 
 .lrgOffset{
   margin-top: 50px;

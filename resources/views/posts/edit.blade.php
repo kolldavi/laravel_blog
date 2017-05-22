@@ -26,8 +26,8 @@
 				{{ Form::select('tags[]', $tags, null, ['class' => 'form-control select2-multi', 'multiple' => 'multiple']) }}
 						
         {{ Form::label('body','Body:',['class'=>'btnOffset'])}}
-        {{ Form::textarea('body',null,array('class'=>'form-control', 'placeholder'=>'enter Text','data-parsley-required'=>"true",'required'=>''))}}
-        
+        {{ Form::textarea('body',null,array('class'=>'form-control offset20', 'placeholder'=>'enter Text','data-parsley-required'=>"true",'required'=>''))}}
+        <br>
       
     </div>
     	<!-- right edit box -->
@@ -57,7 +57,7 @@
 				<div class="row">
 					<div class="col-sm-12">
 						{{Form::open(['route'=>['posts.destroy',$post->id],'method'=>'DELETE'])}}
-						{{Form::submit('Delete',['class' => 'btn btn-danger btn-block btnOffset'])}}
+						{{Form::submit('Delete',['class' => 'btn btn-danger btn-block offset20'])}}
 						{{Form::close()}}
 					</div>
 				</div>

@@ -1,15 +1,11 @@
 <?php
-
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
-
 use App\Http\Requests;
 use App\Tag;
 use App\Post;
 use Session;
 use App\Category;
-
 class PostController extends Controller
 {
     public function __construct(){
@@ -28,7 +24,6 @@ class PostController extends Controller
         return view('posts.index')->with('posts',$posts);
        //return view('posts.index')->withPosts($posts);
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -43,7 +38,6 @@ class PostController extends Controller
         //create form view
         return view('posts/create')->withCategories($categories)->withTags($tags);
     }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -76,7 +70,6 @@ class PostController extends Controller
         //redirect to another page
         return redirect()->route('posts.show',$post->id);
     }
-
     /**
      * Display the specified resource.c
      *
@@ -89,7 +82,6 @@ class PostController extends Controller
         //show page 
         return view('posts/show')->with('post',$post);
     }
-
     /**
      * Show the form for editing the specified resource.
      *
@@ -118,7 +110,6 @@ class PostController extends Controller
         //return view
         return view('posts.edit')->withPost($post)->withCategories($categoriesMap)->withTags($tags2);
     }
-
     /**
      * Update the specified resource in storage.
      *
@@ -164,12 +155,12 @@ class PostController extends Controller
         } else {
             $post->tags()->sync(array());
         }
+        
         //flash data with success msg
          Session::flash('success','This blog post was successfully updated');
         // return view
         return redirect()->route('posts.show',$post->id);
     }
-
     /**
      * Remove the specified resource from storage.
      *
@@ -182,7 +173,6 @@ class PostController extends Controller
         $post = Post::find($id);
         $post->tags()->detach();
         $post->delete();
-
         Session::flash('success',"The post ". $post->{'slug'} ." was deleted");
         return redirect()->route('posts.index');
     }

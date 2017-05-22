@@ -37,8 +37,9 @@
 				</select>
 
 				
-        {{ Form::submit('Create New Post',array('class'=>'btn btn-success btn-lg btn-block btnOffset')) }}
+        {{ Form::submit('Create New Post',array('class'=>'btn btn-success btn-lg btn-block offset20')) }}
       {!! Form::close() !!}
+      <br>
     </div>
     
   </div>
